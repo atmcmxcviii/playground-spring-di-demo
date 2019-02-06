@@ -3,10 +3,9 @@ package hu.atsoft.playground.didemo.services;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GreetingServiceImpl implements GreetingService {
-
+public class ConstructorGreetingService implements GreetingService {
 	@Override
 	public String sayHello() {
-		return "Hello from GreetingServiceImpl";
+		return "Hello - I was injected via the constructor";
 	}
 }
