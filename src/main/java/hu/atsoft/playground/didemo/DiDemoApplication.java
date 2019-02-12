@@ -4,10 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import hu.atsoft.playground.didemo.controllers.ConstructorInjectedController;
 import hu.atsoft.playground.didemo.controllers.MyController;
-import hu.atsoft.playground.didemo.controllers.PropertyInjectedController;
-import hu.atsoft.playground.didemo.controllers.SetterInjectedController;
+import hu.atsoft.playground.didemo.examplebeans.FakeDataSource;
 
 @SpringBootApplication
 public class DiDemoApplication {
@@ -18,9 +16,12 @@ public class DiDemoApplication {
 		MyController controller = (MyController) ctx.getBean("myController");
 		controller.hello();
 		
-		System.out.println(controller.hello());
-		System.out.println(ctx.getBean(PropertyInjectedController.class).sayHello());
-		System.out.println(ctx.getBean(SetterInjectedController.class).sayHello());
-		System.out.println(ctx.getBean(ConstructorInjectedController.class).sayHello());
+		FakeDataSource fakeDataSource = (FakeDataSource) ctx.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUser());
+		
+//		System.out.println(controller.hello());
+//		System.out.println(ctx.getBean(PropertyInjectedController.class).sayHello());
+//		System.out.println(ctx.getBean(SetterInjectedController.class).sayHello());
+//		System.out.println(ctx.getBean(ConstructorInjectedController.class).sayHello());
 	}
 }
